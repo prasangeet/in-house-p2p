@@ -16,22 +16,23 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 ✅ Select the **tech stack**:
 
 - **Frontend:** Next.js (React framework for UI)
-- **Backend:** C++ (Boost.Asio for networking, LibPQ for PostgreSQL)
+- **Backend:** Django (API, database management, authentication)
+- **Networking Module:** C++ (Boost.Asio for peer discovery & file transfers)
 - **Database:** PostgreSQL (Stores shared file metadata and user sessions)
 - **Security:** TLS for encrypted communication, authentication system
 
 ### **Backend Development**
 
-✅ Implement **Hub Server** in C++ using **Boost.Asio** for peer discovery\
-✅ Develop **Peer-to-Peer file transfer** using direct socket connections\
+✅ Implement **Django backend** for API & metadata management\
+✅ Develop **authentication & access control** in Django\
 ✅ Implement **File Indexing & Search** using PostgreSQL\
-✅ Develop **multi-threaded segmented downloads** for efficient transfers\
-✅ Integrate **authentication & access control**
+✅ Develop **WebSocket-based real-time updates**\
+✅ Implement **C++ networking module** for peer discovery & file transfers
 
 ### **Frontend & Communication**
 
 ✅ Create Next.js **dashboard for file sharing & search**\
-✅ Establish **WebSocket-based communication** with the C++ backend\
+✅ Establish **WebSocket-based communication** with the backend\
 ✅ Implement **real-time updates** for shared files and peer availability\
 ✅ Optimize UI for **easy file browsing & downloads**
 
@@ -55,6 +56,8 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 ## **📌 Features**
 
 - **P2P File Sharing:** Directly transfer files between peers using efficient chunking.
+- **Django Backend:** Manages authentication, metadata storage, and indexing.
+- **C++ Networking Module:** Handles peer discovery and file transfers.
 - **Hub-Based Discovery:** Centralized hub server maintains an index of shared files.
 - **Real-Time Search:** Search files across peers with quick results.
 - **Secure Connections:** TLS encryption + authentication for safe transfers.
@@ -66,7 +69,8 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 ## **📌 System Architecture**
 
 - **Frontend (Next.js):** User dashboard for searching & managing shared files.
-- **Backend (C++):** Manages hub server, peer connections, and file transfers.
+- **Backend (Django):** Manages API endpoints, authentication, and metadata storage.
+- **Networking Module (C++):** Manages peer discovery & file transfers.
 - **Database (PostgreSQL):** Stores shared file metadata, user sessions, and access logs.
 - **Security:** Encrypted file transfers, JWT authentication, and access control.
 
@@ -77,9 +81,9 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 | Component      | Technology                           |
 | -------------- | ------------------------------------ |
 | **Frontend**   | Next.js (React.js framework)         |
-| **Backend**    | C++ (Boost.Asio for networking)      |
+| **Backend**    | Django (REST API, authentication)   |
+| **Networking** | C++ (Boost.Asio for peer discovery) |
 | **Database**   | PostgreSQL (Stores metadata)         |
-| **Networking** | WebSockets or gRPC for communication |
 | **Security**   | TLS encryption, JWT authentication   |
 | **Deployment** | Docker (for database & backend)      |
 
@@ -89,22 +93,23 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 
 ```
 📂 in-house-p2p
-├── 📂 backend            # C++ Backend for peer discovery & file sharing
-│   ├── 📂 src            # Source files
-│   │   ├── hub_server.cpp # Main hub server logic
-│   │   ├── peer_handler.cpp # Peer-to-peer connection handling
-│   │   ├── file_transfer.cpp # File chunking & transfer logic
-│   │   └── database.cpp  # PostgreSQL interactions
-│   ├── 📂 include        # Header files
-│   ├── 📂 config         # Config files (DB, security settings)
-│   ├── CMakeLists.txt    # CMake build system
+├── 📂 backend            # Django Backend for API & metadata management
+│   ├── 📂 api            # Django app for file management API
+│   │   ├── models.py     # Database models (File metadata, users, sessions)
+│   │   ├── views.py      # API endpoints for file search & management
+│   │   ├── urls.py       # URL routing
+│   │   └── consumers.py  # WebSocket handling
+│   ├── 📂 config         # Django settings & config files
+│   ├── manage.py         # Django management script
 │   └── README.md         # Backend documentation
+├── 📂 networking         # C++ networking module for peer discovery & transfers
+│   ├── hub_server.cpp    # Main hub server logic
+│   ├── peer_handler.cpp  # Peer-to-peer connection handling
+│   ├── file_transfer.cpp # File chunking & transfer logic
+│   ├── CMakeLists.txt    # CMake build system
+│   └── README.md         # Networking documentation
 ├── 📂 frontend           # Next.js frontend for UI
 │   ├── 📂 src            # React components & pages
-│   │   ├── components    # UI Components (FileList, SearchBar, etc.)
-│   │   ├── pages         # Next.js pages (Dashboard, Login, etc.)
-│   │   ├── api           # Frontend API calls to backend
-│   │   └── styles        # CSS & Tailwind styling
 │   ├── package.json      # Frontend dependencies
 │   ├── next.config.js    # Next.js config
 │   └── README.md         # Frontend documentation
@@ -115,47 +120,49 @@ The In-House P2P File Sharing System is a decentralized peer-to-peer (P2P) file-
 ├── 📂 deployment         # Docker & deployment scripts
 │   ├── Dockerfile        # Backend containerization
 │   ├── docker-compose.yml # Multi-container setup
-│   ├── k8s/              # Kubernetes configurations (if needed)
 │   └── README.md         # Deployment instructions
 └── README.md             # Overall project documentation
 ```
 
 ---
 
+## **📌 Progress & Steps Completed Today**
+
+1. **Installed Boost Library:** Configured Boost C++ Libraries on Windows.
+2. **Set Environment Variables:** Added `BOOST_ROOT` and `BOOST_INCLUDE_PATH`.
+3. **Verified Boost Installation:** Compiled and ran a test program.
+4. **Configured VS Code:** Updated `includePath` to recognize Boost headers.
+5. **Compiled First C++ Program with Boost:** Successfully built and executed the test program using `g++`.
+6. **Decided on Django for the Backend:** Shifted authentication, metadata storage, and API handling to Django.
+
+---
+
 ## **📌 Installation & Setup**
 
-### **1️⃣ Prerequisites**
-
-- Install **PostgreSQL** (Ensure it's running)
-- Install **Boost C++ Libraries** (`boost::asio` for networking)
-- Install **WebSockets (uWebSockets) or gRPC** for frontend-backend communication
-- Install **Docker** (For deployment & containerization)
-
-### **2️⃣ Setting Up PostgreSQL**
-
-```sql
-CREATE DATABASE p2p_network;
-CREATE TABLE files (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    hash TEXT UNIQUE,
-    peer_ip TEXT
-);
-```
-
-### **3️⃣ Running the C++ Backend**
+### **1️⃣ Setting Up Django Backend**
 
 ```bash
-g++ -o server hub_server.cpp -lboost_system -lpqxx -lpq
-./server
+cd backend
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+pip install django djangorestframework channels psycopg2
+python manage.py migrate
+python manage.py runserver
 ```
 
-### **4️⃣ Running the Next.js Frontend**
+### **2️⃣ Running the Next.js Frontend**
 
 ```bash
 cd frontend
 npm install
 npm run dev
+```
+
+### **3️⃣ Running the C++ Networking Module**
+
+```bash
+g++ -o server hub_server.cpp -lboost_system -lpqxx -lpq
+./server
 ```
 
 ---
@@ -177,7 +184,7 @@ This project is **open-source** under the **MIT License**.
 
 ## **📌 Contact & Support**
 
-📧 Email: [b23ch1033@iitj.ac.in](mailto\:b23ch1033@iitj.ac.in)\
+📧 Email: [b23ch1033@iitj.ac.in](mailto:b23ch1033@iitj.ac.in)\
 🐙 GitHub: [GitHub Repo Link]\
 📌 Documentation: [Project Docs Link]
 
